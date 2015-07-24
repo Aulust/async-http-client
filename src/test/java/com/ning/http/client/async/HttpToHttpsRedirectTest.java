@@ -161,21 +161,4 @@ public abstract class HttpToHttpsRedirectTest extends AbstractBasicTest {
             assertEquals(response.getHeader("X-httpToHttps"), "PASS");
         }
     }
-
-    @Test(groups = { "standalone", "default_provider" })
-    public void relativeLocationUrl() throws Throwable {
-        isSet.getAndSet(false);
-
-        AsyncHttpClientConfig cg = new AsyncHttpClientConfig.Builder()//
-                .setMaxRedirects(5)//
-                .setFollowRedirect(true)//
-                .setAcceptAnyCertificate(true)//
-                .build();
-        try (AsyncHttpClient client = getAsyncHttpClient(cg)) {
-            Response response = client.prepareGet(getTargetUrl()).setHeader("X-redirect", "/foo/test").execute().get();
-            assertNotNull(response);
-            assertEquals(response.getStatusCode(), 200);
-            assertEquals(response.getUri().toString(), getTargetUrl());
-        }
-    }
 }

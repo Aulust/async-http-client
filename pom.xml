@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <parent>
-        <groupId>org.sonatype.oss</groupId>
-        <artifactId>oss-parent</artifactId>
-        <version>9</version>
+        <groupId>ru.headhunter.commons</groupId>
+        <artifactId>common-pom</artifactId>
+        <version>1.25</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.ning</groupId>
@@ -17,9 +17,9 @@
     </description>
     <url>http://github.com/AsyncHttpClient/async-http-client</url>
     <scm>
-        <connection>scm:git:git@github.com:AsyncHttpClient/async-http-client.git</connection>
-        <url>https://github.com/AsyncHttpClient/async-http-client</url>
-        <developerConnection>scm:git:git@github.com:AsyncHttpClient/async-http-client.git</developerConnection>
+        <connection>scm:git:git@github.com:Aulust/async-http-client.git</connection>
+        <url>https://github.com/Aulust/async-http-client</url>
+        <developerConnection>scm:git:git@github.com:Aulust/async-http-client.git</developerConnection>
     </scm>
     <issueManagement>
         <system>jira</system>
@@ -234,6 +234,12 @@
                 <artifactId>maven-compiler-plugin</artifactId>
                 <version>2.3.2</version>
                 <configuration>
+                    <source>1.7</source>
+                    <target>1.7</target>
+                    <encoding>UTF-8</encoding>
+                    <showWarnings>true</showWarnings>
+                    <optimize>true</optimize>
+                    <showDeprecation>false</showDeprecation>
                     <maxmem>1024m</maxmem>
                 </configuration>
             </plugin>
@@ -507,28 +513,7 @@
             </properties>
         </profile>
     </profiles>
-    <distributionManagement>
-        <repository>
-            <id>sonatype-nexus-staging</id>
-            <name>Sonatype Release</name>
-            <url>http://oss.sonatype.org/service/local/staging/deploy/maven2</url>
-        </repository>
-        <snapshotRepository>
-            <id>sonatype-nexus-snapshots</id>
-            <name>sonatype-nexus-snapshots</name>
-            <url>${distMgmtSnapshotsUrl}</url>
-        </snapshotRepository>
-        <site>
-            <id>github</id>
-            <url>gitsite:git@github.com/AsyncHttpClient/async-http-client.git</url>
-        </site>
-    </distributionManagement>
-    <repositories>
-        <repository>
-            <id>maven.java.net</id>
-            <url>https://maven.java.net/content/repositories/releases</url>
-        </repository>
-    </repositories>
+
     <properties>
         <additionalparam>-Xdoclint:none</additionalparam>
         <distMgmtSnapshotsUrl>http://oss.sonatype.org/content/repositories/snapshots</distMgmtSnapshotsUrl>

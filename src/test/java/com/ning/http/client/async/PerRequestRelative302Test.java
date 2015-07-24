@@ -150,16 +150,4 @@ public abstract class PerRequestRelative302Test extends AbstractBasicTest {
             assertEquals(ex.getCause().getClass(), ConnectException.class);
         }
     }
-
-    @Test(groups = { "standalone", "default_provider" })
-    public void relativeLocationUrl() throws Throwable {
-        isSet.getAndSet(false);
-
-        try (AsyncHttpClient client = getAsyncHttpClient(null)) {
-            Response response = client.preparePost(getTargetUrl()).setFollowRedirects(true).setHeader("X-redirect", "/foo/test").execute().get();
-            assertNotNull(response);
-            assertEquals(response.getStatusCode(), 200);
-            assertEquals(response.getUri().toString(), getTargetUrl());
-        }
-    }
 }

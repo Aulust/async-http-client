@@ -149,7 +149,7 @@ public class GrizzlyResponse extends ResponseBase {
         List<String> values = headers.getHeaders().get("set-cookie");
         if (isNonEmpty(values)) {
             CookiesBuilder.ServerCookiesBuilder builder =
-                new CookiesBuilder.ServerCookiesBuilder(false, true);
+                new CookiesBuilder.ServerCookiesBuilder(false, false);
             for (String header : values) {
                 builder.parse(header);
             }
