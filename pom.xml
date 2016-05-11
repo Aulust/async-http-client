@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<parent>
-		<groupId>org.sonatype.oss</groupId>
-		<artifactId>oss-parent</artifactId>
-		<version>9</version>
+		<groupId>ru.headhunter.commons</groupId>
+		<artifactId>common-pom</artifactId>
+		<version>1.25</version>
 	</parent>
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>org.asynchttpclient</groupId>
@@ -18,9 +18,9 @@
     </description>
 	<url>http://github.com/AsyncHttpClient/async-http-client</url>
 	<scm>
-		<url>https://github.com/AsyncHttpClient/async-http-client</url>
-		<connection>scm:git:git@github.com:AsyncHttpClient/async-http-client.git</connection>
-		<developerConnection>scm:git:git@github.com:AsyncHttpClient/async-http-client.git</developerConnection>
+		<url>https://github.com/Aulust/async-http-client</url>
+		<connection>scm:git:git@github.com:Aulust/async-http-client.git</connection>
+		<developerConnection>scm:git:git@github.com:Aulust/async-http-client.git</developerConnection>
 	</scm>
 	<issueManagement>
 		<system>jira</system>
@@ -214,25 +214,6 @@
 			</properties>
 		</profile>
 	</profiles>
-	<distributionManagement>
-		<repository>
-			<id>sonatype-nexus-staging</id>
-			<name>Sonatype Release</name>
-			<url>http://oss.sonatype.org/service/local/staging/deploy/maven2
-            </url>
-		</repository>
-		<snapshotRepository>
-			<id>sonatype-nexus-snapshots</id>
-			<name>sonatype-nexus-snapshots</name>
-			<url>${distMgmtSnapshotsUrl}</url>
-		</snapshotRepository>
-	</distributionManagement>
-	<repositories>
-		<repository>
-			<id>maven.java.net</id>
-			<url>https://maven.java.net/content/repositories/releases</url>
-		</repository>
-	</repositories>
 	<modules>
 		<module>netty-bp</module>
 		<module>client</module>

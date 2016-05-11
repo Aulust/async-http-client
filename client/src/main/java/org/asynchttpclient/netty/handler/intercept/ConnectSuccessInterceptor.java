@@ -18,6 +18,7 @@ import io.netty.handler.codec.http.HttpRequest;
 
 import java.io.IOException;
 
+import org.asynchttpclient.Realm;
 import org.asynchttpclient.Request;
 import org.asynchttpclient.RequestBuilder;
 import org.asynchttpclient.netty.NettyResponseFuture;
@@ -27,6 +28,8 @@ import org.asynchttpclient.proxy.ProxyServer;
 import org.asynchttpclient.uri.Uri;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
+import static org.asynchttpclient.Dsl.realm;
 
 public class ConnectSuccessInterceptor {
 
@@ -53,6 +56,13 @@ public class ConnectSuccessInterceptor {
 
         Uri requestUri = request.getUri();
         LOGGER.debug("Connecting to proxy {} for scheme {}", proxyServer, requestUri.getScheme());
+
+        if (future.getProxyRealm() != null && future.getProxyRealm().getScheme() == Realm.AuthScheme.BASIC) {
+            Realm newBasicRealm = realm(future.getProxyRealm())
+              .setUsePreemptiveAuth(false)
+              .build();
+            future.setProxyRealm(newBasicRealm);
+        }
 
         channelManager.upgradeProtocol(channel.pipeline(), requestUri);
         future.setReuseChannel(true);
